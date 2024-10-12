@@ -80,7 +80,7 @@ pokemon.get('/:name([A-Za-z]+)', async (req, res, next) => {
 
     //concicion ? valor si verdadero (return) : valor si falso
     const name = req.params.name;
-    const pkmn = await db.query("SELECT * FROM pokemon WHERE pok_name=" + name + ";");
+    const pkmn = await db.query("SELECT * FROM pokemon WHERE pok_name = '" + name + "';");
     if(pkmn.length > 0) {
         return res.status(200).json({code: 200, message: pkmn});
     }
